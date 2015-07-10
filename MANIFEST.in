@@ -1,2 +1,3 @@
 include *.txt
 include *.rst
+graft pyslices_ipynb_conversion/data
