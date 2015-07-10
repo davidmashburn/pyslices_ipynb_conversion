@@ -1,0 +1,65 @@
+#!/usr/bin/env python
+#PySlices Save Format Version 1.2 (PySlices v0.9.8 and later)
+#PySlices Marker Information -- Begin Grouping Slice
+#PySlices Marker Information -- Begin Output Slice
+#PySlices 0.9.8.12 - The Flakiest Python Shell... Cut Up!
+#Python 2.7.6 (default, Jun 22 2015, 17:58:13) 
+#[GCC 4.8.2] on linux2
+#Type "help", "copyright", "credits" or "license" for more information.
+#
+#PySlices Marker Information -- Begin Grouping Slice
+#PySlices Marker Information -- Begin Output Slice
+#                            Tutorial!!!
+#------------------------------------------------------------------------
+#PySlices is the newest member of the Py suite!
+#It is a modified version of PyCrust that supports multi-line commands.
+#
+#Input and output are contained in "Slices" shown as markers in the left margin.
+#Input Slices have RED margins (active, editable).
+#Output Slices have BLUE margins (frozen, not editable).
+#
+#Commands in slices can be on more than one line, as with Sage or Mathematica.
+#For example, the command:
+#PySlices Marker Information -- Begin Grouping Slice
+#PySlices Marker Information -- Begin Input Slice
+a=1
+b=2
+print a+b
+#PySlices Marker Information -- Begin Grouping Slice
+#PySlices Marker Information -- Begin Output Slice
+#will all run in sequence, much like a script.
+#Try running the above Input Slice by clicking somewhere in its text and
+#using Ctrl-Return, Shift-Return, or Numpad Enter to execute.
+#Previous commands (Old Slices) can be re-edited and run again in place.
+#
+#Slices can also be:
+# * selected (click on the margin, Shift-click for multiple selection)
+# * folded (click the margin twice)
+# * selected and deleted (hit delete while selected)
+# * divided (Ctrl-D)
+# * merged (Ctrl-M while selecting adjacent, like-colored slices)
+#
+#Try deleting the slice above this one by clicking on the red margin.
+#
+#If you want a more traditional shell feel, try enabling "Shell Mode" in
+#"Options->Settings->Shell Mode" (or try PyCrust).
+#In Shell Mode, Return acts in the usual way, executing command, and
+#    Ctrl-Return and Shift-Return always print newlines.
+#
+#Saving and opening "sessions" is now supported!  This is a little
+#different to other shells where the history is saved.  With PySlices, 
+#the whole document is saved in a simple text format!
+#
+#To disable this Tutorial on startup, uncheck it in the menu at:
+#"Options->Startup->Show PySlices tutorial"
+#
+#PySlices may not be the best thing since sliced bread, but
+#I hope it makes using Python a little bit sweeter!
+#
+#PySlices Marker Information -- Begin Grouping Slice
+#PySlices Marker Information -- Begin Input Slice
+'This is a test!'
+#PySlices Marker Information -- Begin Output Slice
+#'This is a test!'
+#PySlices Marker Information -- Begin Grouping Slice
+#PySlices Marker Information -- Begin Input Slice

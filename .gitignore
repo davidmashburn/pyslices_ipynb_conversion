@@ -1,0 +1,9 @@
+# Ignore these auto-generated files:
+*.pyc
+*.pyo
+*~
+dist
+build
+zips
+pyslices_ipynb_conversion.egg-info
+MANIFEST
