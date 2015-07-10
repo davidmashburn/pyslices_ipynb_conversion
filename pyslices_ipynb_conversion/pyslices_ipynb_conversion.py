@@ -1,5 +1,6 @@
 import os
-import IPython.nbformat as nbf
+import tempfile
+import nbformat as nbf
 
 usrBinEnvPythonText = '#!/usr/bin/env python\n'
 pyslicesFormatHeaderText = ['#PySlices Save Format Version 1.1 (PySlices v0.9.7.8 and later)\n',
@@ -99,8 +100,8 @@ def write_pyslices_from_ipynb(ipynb_file, pyslices_file):
         fid.write(make_pyslices_from_ipynb(ipynb_file))
 
 if __name__=='__main__':
-    f='/home/mashbudn/Desktop/TEST.pyslices'
-    outf = '/media/home/Programming/Git/IPythonNotebooks/test.ipynb'
+    f = os.path.join(os.path.dirname(__file__), 'data/sample.pyslices')
+    outf = os.path.join(tempfile.gettempdir(), 'test.ipynb')
 
     write_ipynb_from_pyslices(f, outf)
 
