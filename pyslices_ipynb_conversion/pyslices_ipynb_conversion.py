@@ -31,7 +31,7 @@ def parse_pyslices_text(text):
     start_types = [is_input_marker(i+'\n') for i in firsts]
     slices = [i.split(outputStartText) for i in rests]
     inputs_and_outputs = [((s[0] if t else ''), [i[1:] for i in s[t:]])
-               for t, s in zip(start_types, slices)]
+                          for t, s in zip(start_types, slices)]
     return inputs_and_outputs
 
 class objdict(dict):
