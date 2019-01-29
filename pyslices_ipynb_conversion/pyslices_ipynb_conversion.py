@@ -1,5 +1,7 @@
 import os
+import sys
 import tempfile
+
 import nbformat as nbf
 
 usrBinEnvPythonText = '#!/usr/bin/env python\n'
@@ -83,7 +85,7 @@ def make_pyslices_from_ipynb(ipynb_file):
 
     for cell in nb.cells:
         if cell.cell_type=='code':
-            print cell
+            print(cell)
             out_list += [groupingStartText, inputStartText, add_nl(cell.source)]
             for out in cell.outputs:
                 if out.output_type=='stream' and out.name in ['stdout',]: # Need to add error types too...
@@ -100,12 +102,37 @@ def write_pyslices_from_ipynb(ipynb_file, pyslices_file):
         fid.write(make_pyslices_from_ipynb(ipynb_file))
 
 if __name__=='__main__':
-    f = os.path.join(os.path.dirname(__file__), 'data/sample.pyslices')
-    outf = os.path.join(tempfile.gettempdir(), 'test.ipynb')
-
-    write_ipynb_from_pyslices(f, outf)
-
-    print make_pyslices_from_ipynb(outf)
-
-    # Round-tripping works but insets input in front of every output and
-    # insists that the last line is a blank (file ends in '\n')
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("input", help="input filename")
+    parser.add_argument("-o", "--output", help="output filename")
+    parser.add_argument("-f", "--force", help="overwrite the output file if it exists",
+                        action="store_true")
+    args = parser.parse_args()
+    
+    
+    input_filename = args.input
+    input_filename_without_extension, input_ext = os.path.splitext(input_filename)
+    
+    ext_toggle = {'.pyslices': '.ipynb',
+                  '.ipynb': '.pyslices'}
+    output_filename = (args.output if args.output is not None else
+                       (input_filename_without_extension +
+                        ext_toggle[input_ext]))
+    
+    conversion_fun = (write_ipynb_from_pyslices if input_ext == '.pyslices' else
+                      write_pyslices_from_ipynb if input_ext == '.ipynb' else
+                      None)
+    
+    if conversion_fun is None:
+        raise Exception('Can only convert between .pyslices and .ipynb files')
+    
+    if os.path.exists(output_filename) and not args.force:
+        print("Overwrite existing file?")
+        print(output_filename)
+        print("y/n")
+        user_input = input()
+        if not user_input or user_input[0] != 'y':
+            exit()
+    
+    conversion_fun(input_filename, output_filename)
